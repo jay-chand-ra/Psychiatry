@@ -1,0 +1,36 @@
+{
+    "services": [
+      {
+        "id": 1,
+        "name": "Cognitive Behavioral Therapy",
+        "description": "A goal-oriented therapy to change patterns of thinking."
+      },
+      {
+        "id": 2,
+        "name": "Psychodynamic Therapy",
+        "description": "Focuses on unconscious processes and childhood experiences."
+      },
+      {
+        "id": 3,
+        "name": "Mindfulness-Based Therapy",
+        "description": "Incorporates mindfulness practices to enhance mental well-being."
+      }
+    ],
+    "founderMessage": {
+      "title": "A Message from Our Founder",
+      "content": "Welcome to our Psychiatry Center, where we prioritize your mental health and well-being."
+    },
+    "testimonials": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "message": "This is the best therapy I have ever received!"
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "message": "The support I received was life-changing."
+      }
+    ]
+  }
+  
