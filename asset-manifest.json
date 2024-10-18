@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Psychiatry/static/css/main.7bcdea1c.css",
+    "main.js": "/Psychiatry/static/js/main.f55a97e4.js",
+    "static/js/453.f69bbbff.chunk.js": "/Psychiatry/static/js/453.f69bbbff.chunk.js",
+    "index.html": "/Psychiatry/index.html",
+    "main.7bcdea1c.css.map": "/Psychiatry/static/css/main.7bcdea1c.css.map",
+    "main.f55a97e4.js.map": "/Psychiatry/static/js/main.f55a97e4.js.map",
+    "453.f69bbbff.chunk.js.map": "/Psychiatry/static/js/453.f69bbbff.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7bcdea1c.css",
+    "static/js/main.f55a97e4.js"
+  ]
+}
