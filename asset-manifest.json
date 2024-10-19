@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/psychiatry/static/css/main.7e6c047d.css",
-    "main.js": "/psychiatry/static/js/main.82872b46.js",
-    "static/js/453.f45f2d46.chunk.js": "/psychiatry/static/js/453.f45f2d46.chunk.js",
-    "index.html": "/psychiatry/index.html",
-    "main.7e6c047d.css.map": "/psychiatry/static/css/main.7e6c047d.css.map",
-    "main.82872b46.js.map": "/psychiatry/static/js/main.82872b46.js.map",
-    "453.f45f2d46.chunk.js.map": "/psychiatry/static/js/453.f45f2d46.chunk.js.map"
+    "main.css": "/Psychiatry/static/css/main.7e6c047d.css",
+    "main.js": "/Psychiatry/static/js/main.93199979.js",
+    "static/js/453.f45f2d46.chunk.js": "/Psychiatry/static/js/453.f45f2d46.chunk.js",
+    "index.html": "/Psychiatry/index.html",
+    "main.7e6c047d.css.map": "/Psychiatry/static/css/main.7e6c047d.css.map",
+    "main.93199979.js.map": "/Psychiatry/static/js/main.93199979.js.map",
+    "453.f45f2d46.chunk.js.map": "/Psychiatry/static/js/453.f45f2d46.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7e6c047d.css",
-    "static/js/main.82872b46.js"
+    "static/js/main.93199979.js"
   ]
 }
