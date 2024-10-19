@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import useServices from '../hooks/useServices';
 import useFounderMessage from '../hooks/useFounderMessage';
 import useTestimonials from '../hooks/useTestimonials';
@@ -125,9 +126,12 @@ const ServiceCard = ({ service }) => (
     />
     <h3 className="font-semibold text-base md:text-lg mb-2 text-indigo-700">{service.name}</h3>
     <p className="text-gray-600 flex-grow text-xs md:text-sm">{service.description}</p>
-    <button className="mt-4 bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 transition duration-300 text-xs md:text-sm">
+    <Link 
+      to={`/service/${service.id}`} 
+      className="mt-4 bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 transition duration-300 text-xs md:text-sm text-center"
+    >
       Learn More
-    </button>
+    </Link>
   </div>
 );
 

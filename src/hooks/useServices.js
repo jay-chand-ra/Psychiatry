@@ -8,9 +8,9 @@ const useServices = () => {
     setServices([
       {
         id: 1,
-        name: 'Cognitive Behavioral Therapy',
-        description: 'Cognitive Behavioral Therapy (CBT) is a structured, time-limited psychotherapy that focuses on the relationship between thoughts, feelings, and behaviors.',
-        image: 'https://images.pexels.com/photos/9065264/pexels-photo-9065264.jpeg',
+        name: 'Mindfulness-Based Therapy',
+        description: 'Mindfulness-Based Therapy incorporates mindfulness practices into the therapeutic process.',
+        image: 'https://images.pexels.com/photos/5711011/pexels-photo-5711011.jpeg',
       },
       {
         id: 2,
@@ -20,9 +20,9 @@ const useServices = () => {
       },
       {
         id: 3,
-        name: 'Mindfulness-Based Therapy',
-        description: 'Mindfulness-Based Therapy incorporates mindfulness practices into the therapeutic process.',
-        image: 'https://images.pexels.com/photos/5711011/pexels-photo-5711011.jpeg',
+        name: 'Cognitive Behavioral Therapy',
+        description: 'Cognitive Behavioral Therapy (CBT) is a structured, time-limited psychotherapy that focuses on the relationship between thoughts, feelings, and behaviors.',
+        image: 'https://images.pexels.com/photos/9065264/pexels-photo-9065264.jpeg',
       },
     ]);
   }, []);
