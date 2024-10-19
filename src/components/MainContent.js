@@ -1,104 +1,148 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import useServices from '../hooks/useServices';
+import useFounderMessage from '../hooks/useFounderMessage';
+import useTestimonials from '../hooks/useTestimonials';
+import { fetchData } from '../script';
 
-class MainContent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      services: [
-        {
-          id: 1,
-          name: 'Cognitive Behavioral Therapy',
-          description: 'Cognitive Behavioral Therapy (CBT) is a structured, time-limited psychotherapy that focuses on the relationship between thoughts, feelings, and behaviors. It aims to identify and challenge negative thought patterns, replacing them with healthier alternatives. CBT is effective for a range of issues, including anxiety and depression.',
-          image: 'https://images.pexels.com/photos/9065264/pexels-photo-9065264.jpeg',
-        },
-        {
-          id: 2,
-          name: 'Psychodynamic Therapy',
-          description: 'Psychodynamic Therapy explores the unconscious mind and how past experiences shape current behavior. It focuses on understanding emotional conflicts and developing insight into thoughts and feelings. This process leads to improved emotional functioning and healthier interpersonal relationships over time.',
-          image: 'https://images.pexels.com/photos/7176319/pexels-photo-7176319.jpeg',
-        },
-        {
-          id: 3,
-          name: 'Mindfulness-Based Therapy',
-          description: 'Mindfulness-Based Therapy incorporates mindfulness practices into the therapeutic process. It teaches individuals to focus on the present moment without judgment, enhancing self-awareness and emotional regulation. This approach encourages acceptance of thoughts and feelings, promoting a sense of calm.',
-          image: 'https://images.pexels.com/photos/5711011/pexels-photo-5711011.jpeg',
-        },
-      ],
-      founderMessage: {
-        title: "A Message from Our Founder",
-        content: "Welcome to our Psychiatry Center, where we prioritize your mental health and well-being. Our dedicated team is here to provide the support you need. Together, we can explore your thoughts and feelings, and empower you to take the steps necessary for a brighter future.",
-        image: 'https://images.pexels.com/photos/5717546/pexels-photo-5717546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      },
-      testimonials: [
-        {
-          id: 1,
-          name: 'John Doe',
-          message: 'This is the best therapy I have ever received! The support transformed my life and helped me navigate my challenges effectively.',
-          image: 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg', // Direct image URL
-        },
-        {
-          id: 2,
-          name: 'Jane Smith',
-          message: 'The support I received was life-changing! I felt heard and understood throughout the process, which made all the difference.',
-          image: 'https://images.pexels.com/photos/5490235/pexels-photo-5490235.jpeg', // Direct image URL
-        },
-      ],
-    };
-  }
+const MainContent = () => {
+  const services = useServices();
+  const founderMessage = useFounderMessage();
+  const testimonials = useTestimonials();
+  const [apiData, setApiData] = useState(null);
 
-  render() {
-    return (
-      <main className="p-5">
-        <section id="founder-message" className="mb-10 bg-gray-100 p-5 rounded-md shadow flex items-center">
-          <img 
-            src={this.state.founderMessage.image} 
-            alt="Founder" 
-            className="w-1/3 h-auto max-h-[400px] object-contain rounded-md mr-5" 
-          />
-          <div className="flex-1">
-            <h2 className="text-2xl font-bold">{this.state.founderMessage.title}</h2>
-            <p className="mt-3">{this.state.founderMessage.content}</p>
+  useEffect(() => {
+    fetchData().then(data => {
+      setApiData(data);
+    });
+  }, []);
+
+  return (
+    <main className="p-5 container mx-auto max-w-6xl">
+      {/* Founder's message section */}
+      <section id="founder-message" className="mb-16 bg-indigo-50 p-4 md:p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center">
+        <LazyImage 
+          src={founderMessage.image} 
+          alt="Founder" 
+          className="w-full md:w-1/3 h-auto max-h-[300px] object-cover rounded-md mb-6 md:mb-0 md:mr-8" 
+        />
+        <div className="md:w-2/3">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 text-indigo-800">{founderMessage.title}</h2>
+          <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-700">{founderMessage.content}</p>
+        </div>
+      </section>
+
+      {/* Services section */}
+      <section id="services" className="mb-16">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-8 text-center text-indigo-800">Our Services</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map(service => (
+            <ServiceCard key={service.id} service={service} />
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials section */}
+      {testimonials.length > 0 && (
+        <section id="testimonials" className="mb-16">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-8 text-center text-indigo-800">Testimonials</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials.map((testimonial) => (
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+            ))}
           </div>
         </section>
+      )}
 
-        <section id="services" className="mb-10">
-          <h2 className="text-2xl font-bold mb-5">Services Offered</h2>
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {this.state.services.map(service => (
-              <li key={service.id} className="border p-4 rounded-md shadow hover:bg-gray-50 transition duration-200 flex flex-col">
-                <img 
-                  src={service.image} 
-                  alt={service.name} 
-                  className="w-full h-48 object-cover rounded-md mb-2" 
-                />
-                <h3 className="font-semibold text-lg mb-1">{service.name}</h3>
-                <p className="text-gray-700">{service.description}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
+      {/* Contact section (you may need to add this) */}
+      <section id="contact" className="mb-16">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-8 text-center text-indigo-800">Contact Us</h2>
+        {/* Add your contact form or information here */}
+      </section>
 
-        <section id="testimonials">
-          <h2 className="text-2xl font-bold mb-5">Testimonials</h2>
-          <ul className="space-y-6">
-            {this.state.testimonials.map(testimonial => (
-              <li key={testimonial.id} className="border p-4 rounded-md shadow hover:bg-gray-50 transition duration-200 flex items-start">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name} 
-                  className="w-16 h-16 rounded-full mr-4 object-cover" 
-                />
-                <div>
-                  <strong className="block text-lg">{testimonial.name}</strong>
-                  <p className="text-gray-600">{testimonial.message}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+      {/* API Data section */}
+      {apiData && (
+        <section id="api-data" className="mb-16">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-8 text-center text-indigo-800">API Data</h2>
+          <pre className="bg-indigo-50 p-4 rounded-lg overflow-x-auto text-gray-700 text-xs md:text-sm">
+            {JSON.stringify(apiData, null, 2)}
+          </pre>
         </section>
-      </main>
-    );
-  }
-}
+      )}
+    </main>
+  );
+};
+
+const LazyImage = ({ src, alt, className }) => {
+  const [imageSrc, setImageSrc] = useState('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
+  const [imageRef, setImageRef] = useState();
+
+  useEffect(() => {
+    let observer;
+    let didCancel = false;
+
+    if (imageRef && imageSrc !== src) {
+      if (IntersectionObserver) {
+        observer = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (
+                !didCancel &&
+                (entry.intersectionRatio > 0 || entry.isIntersecting)
+              ) {
+                setImageSrc(src);
+                observer.unobserve(imageRef);
+              }
+            });
+          },
+          {
+            threshold: 0.01,
+            rootMargin: '75%',
+          }
+        );
+        observer.observe(imageRef);
+      } else {
+        // Fallback for older browsers
+        setImageSrc(src);
+      }
+    }
+    return () => {
+      didCancel = true;
+      if (observer && observer.unobserve) {
+        observer.unobserve(imageRef);
+      }
+    };
+  }, [src, imageSrc, imageRef]);
+
+  return <img ref={setImageRef} src={imageSrc} alt={alt} className={className} />;
+};
+
+const ServiceCard = ({ service }) => (
+  <div className="border border-indigo-100 p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 flex flex-col bg-white">
+    <LazyImage 
+      src={service.image} 
+      alt={service.name} 
+      className="w-full h-40 md:h-48 object-cover rounded-md mb-4" 
+    />
+    <h3 className="font-semibold text-base md:text-lg mb-2 text-indigo-700">{service.name}</h3>
+    <p className="text-gray-600 flex-grow text-xs md:text-sm">{service.description}</p>
+    <button className="mt-4 bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 transition duration-300 text-xs md:text-sm">
+      Learn More
+    </button>
+  </div>
+);
+
+const TestimonialCard = ({ testimonial }) => (
+  <div className="bg-white border border-indigo-100 p-4 rounded-lg shadow-md flex items-start hover:shadow-lg transition duration-300 transform hover:scale-105">
+    <LazyImage 
+      src={testimonial.image} 
+      alt={testimonial.name} 
+      className="w-10 h-10 md:w-12 md:h-12 rounded-full mr-4 object-cover flex-shrink-0" 
+    />
+    <div>
+      <p className="font-semibold text-sm md:text-base mb-1 text-indigo-700">{testimonial.name}</p>
+      <p className="text-gray-600 text-xs md:text-sm">{testimonial.message}</p>
+    </div>
+  </div>
+);
 
 export default MainContent;
