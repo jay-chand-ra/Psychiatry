@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Psychiatry/static/css/main.7bcdea1c.css",
-    "main.js": "/Psychiatry/static/js/main.f55a97e4.js",
-    "static/js/453.f69bbbff.chunk.js": "/Psychiatry/static/js/453.f69bbbff.chunk.js",
-    "index.html": "/Psychiatry/index.html",
-    "main.7bcdea1c.css.map": "/Psychiatry/static/css/main.7bcdea1c.css.map",
-    "main.f55a97e4.js.map": "/Psychiatry/static/js/main.f55a97e4.js.map",
-    "453.f69bbbff.chunk.js.map": "/Psychiatry/static/js/453.f69bbbff.chunk.js.map"
+    "main.css": "/your-repo-name/static/css/main.7e6c047d.css",
+    "main.js": "/your-repo-name/static/js/main.62393370.js",
+    "static/js/453.f45f2d46.chunk.js": "/your-repo-name/static/js/453.f45f2d46.chunk.js",
+    "index.html": "/your-repo-name/index.html",
+    "main.7e6c047d.css.map": "/your-repo-name/static/css/main.7e6c047d.css.map",
+    "main.62393370.js.map": "/your-repo-name/static/js/main.62393370.js.map",
+    "453.f45f2d46.chunk.js.map": "/your-repo-name/static/js/453.f45f2d46.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7bcdea1c.css",
-    "static/js/main.f55a97e4.js"
+    "static/css/main.7e6c047d.css",
+    "static/js/main.62393370.js"
   ]
 }
